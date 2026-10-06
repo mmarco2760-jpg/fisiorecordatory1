@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FisioRecordatorio</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="alerta" class="alerta"></div>
+
+<div class="app">
+
+    <header>
+        <div>
+            <h1>💙 FisioRecordatorio</h1>
+            <p>Tu fisioterapia, más fácil y divertida.</p>
+        </div>
+
+        <div class="header-icon">🩺</div>
+    </header>
+
+
+    <!-- ========================= -->
+    <!-- INICIO -->
+    <!-- ========================= -->
+
+    <section id="inicio" class="contenido">
+
+        <div class="tarjeta perfil">
+
+            <div class="foto">👩‍⚕️</div>
+
+            <h2>Gaby Lourdes Navarro Mamani</h2>
+
+            <span class="badge">
+                Fisioterapeuta
+            </span>
+
+            <p class="subtitulo">
+                Atención y seguimiento para ayudarte a mantener
+                una mejor movilidad y bienestar.
+            </p>
+
+            <div class="numero">
+                📞 944 331 844
+            </div>
+
+            <a href="tel:944331844">
+                <button class="btn-verde">
+                    📞 Llamar a la fisioterapeuta
+                </button>
+            </a>
+
+            <button onclick="irAgendar()">
+                📅 Agendar una cita
+            </button>
+
+        </div>
+
+
+        <!-- PRÓXIMA CITA -->
+
+        <div class="recordatorio">
+
+            <h3>🔔 Próxima cita</h3>
+
+            <div id="recordatorioContenido">
+                Aún no tienes ninguna cita agendada.
+            </div>
+
+        </div>
+
+
+        <!-- ACCIONES RÁPIDAS -->
+
+        <div class="tarjeta">
+
+            <h2>⚡ Acciones rápidas</h2>
+
+            <button onclick="irAgendar()">
+                📅 Nueva cita
+            </button>
+
+            <button
+                class="btn-gris"
+                onclick="irCitas()"
+            >
+                📋 Ver mis citas
+            </button>
+
+            <button
+                class="btn-verde"
+                onclick="irJuegos()"
+            >
+                🎮 Jugar FisioGames
+            </button>
+
+            <!-- NUEVO -->
+            <button
+                class="btn-gris"
+                onclick="irHistorial()"
+            >
+                👥 Historial de pacientes
+            </button>
+
+        </div>
+
+
+        <!-- CÓMO FUNCIONA -->
+
+        <div class="tarjeta">
+
+            <h2>✨ ¿Cómo funciona?</h2>
+
+            <div class="pasos">
+
+                <div class="paso">
+
+                    <div class="paso-icon">
+                        👤
+                    </div>
+
+                    <div>
+                        <b>
+                            1. Registra tus datos
+                        </b>
+
+                        <br>
+
+                        <small>
+                            Completa el formulario.
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="paso">
+
+                    <div class="paso-icon">
+                        📅
+                    </div>
+
+                    <div>
+                        <b>
+                            2. Elige una fecha
+                        </b>
+
+                        <br>
+
+                        <small>
+                            Selecciona el día de atención.
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="paso">
+
+                    <div class="paso-icon">
+                        ⏰
+                    </div>
+
+                    <div>
+                        <b>
+                            3. Escoge un horario
+                        </b>
+
+                        <br>
+
+                        <small>
+                            Elige un horario disponible.
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="paso">
+
+                    <div class="paso-icon">
+                        🔔
+                    </div>
+
+                    <div>
+                        <b>
+                            4. Recibe tu recordatorio
+                        </b>
+
+                        <br>
+
+                        <small>
+                            La app mostrará tu próxima cita.
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- AGENDAR CITA -->
+    <!-- ========================= -->
+
+    <section
+        id="agendar"
+        class="contenido oculto"
+    >
+
+        <div class="tarjeta">
+
+            <h2>📅 Agendar cita</h2>
+
+            <p class="subtitulo">
+                Completa tus datos y selecciona un horario.
+            </p>
+
+
+            <label>
+                Nombre completo
+            </label>
+
+            <input
+                id="nombre"
+                type="text"
+                placeholder="Ejemplo: Marco Andre"
+            >
+
+
+            <label>
+                Número de celular
+            </label>
+
+            <input
+                id="telefono"
+                type="tel"
+                placeholder="999 999 999"
+            >
+
+
+            <label>
+                Fecha de la cita
+            </label>
+
+            <input
+                id="fecha"
+                type="date"
+            >
+
+
+            <label>
+                Horario disponible
+            </label>
+
+
+            <div class="horarios">
+
+                <div
+                    class="hora"
+                    data-hora="8:00 AM"
+                >
+                    8:00 AM
+                </div>
+
+                <div
+                    class="hora"
+                    data-hora="9:00 AM"
+                >
+                    9:00 AM
+                </div>
+
+                <div
+                    class="hora"
+                    data-hora="10:00 AM"
+                >
+                    10:00 AM
+                </div>
+
+                <div
+                    class="hora"
+                    data-hora="11:00 AM"
+                >
+                    11:00 AM
+                </div>
+
+                <div
+                    class="hora"
+                    data-hora="2:00 PM"
+                >
+                    2:00 PM
+                </div>
+
+                <div
+                    class="hora"
+                    data-hora="3:00 PM"
+                >
+                    3:00 PM
+                </div>
+
+                <div
+                    class="hora"
+                    data-hora="4:00 PM"
+                >
+                    4:00 PM
+                </div>
+
+                <div
+                    class="hora"
+                    data-hora="5:00 PM"
+                >
+                    5:00 PM
+                </div>
+
+                <div
+                    class="hora"
+                    data-hora="6:00 PM"
+                >
+                    6:00 PM
+                </div>
+
+            </div>
+
+
+            <label>
+                Motivo de la cita
+            </label>
+
+            <textarea
+                id="motivo"
+                rows="3"
+                placeholder="Ejemplo: dolor de espalda"
+            ></textarea>
+
+
+            <button onclick="confirmarCita()">
+                ✅ Confirmar cita
+            </button>
+
+            <button
+                class="btn-gris"
+                onclick="irInicio()"
+            >
+                Cancelar
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- MIS CITAS -->
+    <!-- ========================= -->
+
+    <section
+        id="citas"
+        class="contenido oculto"
+    >
+
+        <div class="tarjeta">
+
+            <h2>📋 Mis citas</h2>
+
+            <p class="subtitulo">
+                Aquí puedes revisar tus citas.
+            </p>
+
+        </div>
+
+        <div id="listaCitas"></div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- HISTORIAL DE PACIENTES -->
+    <!-- NUEVA SECCIÓN -->
+    <!-- ========================= -->
+
+    <section
+        id="historial"
+        class="contenido oculto"
+    >
+
+        <div class="tarjeta">
+
+            <h2>👥 Historial de pacientes</h2>
+
+            <p class="subtitulo">
+                Pacientes que agendaron una cita
+                con la fisioterapeuta.
+            </p>
+
+        </div>
+
+
+        <div
+            id="listaHistorialPacientes"
+        >
+
+            <div class="tarjeta">
+
+                <p class="subtitulo">
+                    Cargando historial...
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn-gris"
+            onclick="irInicio()"
+        >
+            🏠 Volver al inicio
+        </button>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- JUEGOS -->
+    <!-- ========================= -->
+
+    <section
+        id="juegos"
+        class="contenido oculto"
+    >
+
+        <div id="menuJuegos">
+
+            <div class="tarjeta">
+
+                <h2>🎮 FisioGames</h2>
+
+                <p class="subtitulo">
+                    Completa retos de coordinación,
+                    memoria, equilibrio y movimiento.
+                </p>
+
+
+                <div class="stats">
+
+                    <div class="stat">
+
+                        <strong id="victorias">
+                            0
+                        </strong>
+
+                        <span>
+                            Victorias
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <strong id="puntos">
+                            0
+                        </strong>
+
+                        <span>
+                            Puntos
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <strong>
+                            10%
+                        </strong>
+
+                        <span>
+                            Premio
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div
+                        id="barraProgreso"
+                        class="progress-bar"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MENÚ DE JUEGOS -->
+
+            <div class="game-grid">
+
+                <button
+                    class="game"
+                    onclick="abrirJuego('tenis')"
+                >
+
+                    <div class="game-icon">
+                        🎾
+                    </div>
+
+                    <h3>Tenis Pro</h3>
+
+                    <p>
+                        Golpea la pelota.
+                    </p>
+
+                    <span class="game-badge">
+                        REFLEJOS
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="game"
+                    onclick="abrirJuego('runner')"
+                >
+
+                    <div class="game-icon">
+                        🏃
+                    </div>
+
+                    <h3>Fisio Runner</h3>
+
+                    <p>
+                        Salta obstáculos.
+                    </p>
+
+                    <span class="game-badge">
+                        MOVIMIENTO
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="game"
+                    onclick="abrirJuego('reaction')"
+                >
+
+                    <div class="game-icon">
+                        ⚡
+                    </div>
+
+                    <h3>Reaction Pro</h3>
+
+                    <p>
+                        Toca rápidamente.
+                    </p>
+
+                    <span class="game-badge">
+                        VELOCIDAD
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="game"
+                    onclick="abrirJuego('balance')"
+                >
+
+                    <div class="game-icon">
+                        🧘
+                    </div>
+
+                    <h3>Balance Pro</h3>
+
+                    <p>
+                        Mantén el equilibrio.
+                    </p>
+
+                    <span class="game-badge">
+                        EQUILIBRIO
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="game"
+                    onclick="abrirJuego('basket')"
+                >
+
+                    <div class="game-icon">
+                        🏀
+                    </div>
+
+                    <h3>Basket Shot</h3>
+
+                    <p>
+                        Controla el lanzamiento.
+                    </p>
+
+                    <span class="game-badge">
+                        COORDINACIÓN
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="game"
+                    onclick="abrirJuego('memory')"
+                >
+
+                    <div class="game-icon">
+                        🧠
+                    </div>
+
+                    <h3>Fisio Memory</h3>
+
+                    <p>
+                        Encuentra las parejas.
+                    </p>
+
+                    <span class="game-badge">
+                        MEMORIA
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="game"
+                    onclick="abrirJuego('stretch')"
+                >
+
+                    <div class="game-icon">
+                        🤸
+                    </div>
+
+                    <h3>Stretch Pro</h3>
+
+                    <p>
+                        Completa movimientos.
+                    </p>
+
+                    <span class="game-badge">
+                        MOVILIDAD
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="premio"
+                class="premio"
+            >
+
+                <h2>
+                    🏆 ¡PREMIO DESBLOQUEADO!
+                </h2>
+
+                <p>
+                    Has ganado una recompensa.
+                </p>
+
+                <h3>
+                    🎁 10% de descuento
+                </h3>
+
+                <div class="cupon">
+                    FISIO10
+                </div>
+
+            </div>
+
+        </div>
+                <!-- ========================= -->
+        <!-- TENIS -->
+        <!-- ========================= -->
+
+        <div id="juegoTenis" class="juego">
+
+            <div class="tarjeta">
+
+                <h2>🎾 Tenis Pro</h2>
+
+                <div class="score">
+                    <span>🏆 Puntos</span>
+                    <strong id="tennisScore">0</strong>
+                </div>
+
+                <canvas
+                    id="tennisCanvas"
+                    width="480"
+                    height="400"
+                ></canvas>
+
+                <button onclick="golpearPelota()">
+                    🎾 GOLPEAR
+                </button>
+
+                <div
+                    id="tennisMessage"
+                    class="mensaje"
+                >
+                    Espera la pelota...
+                </div>
+
+                <button
+                    class="btn-gris"
+                    onclick="volverMenuJuegos()"
+                >
+                    ⬅️ Volver
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- RUNNER -->
+        <!-- ========================= -->
+
+        <div id="juegoRunner" class="juego">
+
+            <div class="tarjeta">
+
+                <h2>🏃 Fisio Runner</h2>
+
+                <div class="score">
+                    <span>🏃 Distancia</span>
+                    <strong id="runnerScore">
+                        0 / 10
+                    </strong>
+                </div>
+
+                <div class="runner">
+
+                    <div class="runner-ground"></div>
+
+                    <div
+                        class="runner-player"
+                        id="runnerPlayer"
+                    >
+                        🏃
+                    </div>
+
+                    <div class="obstaculo">
+                        🪨
+                    </div>
+
+                </div>
+
+                <button onclick="saltar()">
+                    ⬆️ SALTAR
+                </button>
+
+                <div
+                    id="runnerMessage"
+                    class="mensaje"
+                >
+                    ¡Prepárate!
+                </div>
+
+                <button
+                    class="btn-gris"
+                    onclick="volverMenuJuegos()"
+                >
+                    ⬅️ Volver
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- REACTION -->
+        <!-- ========================= -->
+
+        <div id="juegoReaction" class="juego">
+
+            <div class="tarjeta">
+
+                <h2>⚡ Reaction Pro</h2>
+
+                <div class="score">
+                    <span>⚡ Aciertos</span>
+                    <strong id="reactionScore">
+                        0 / 10
+                    </strong>
+                </div>
+
+                <div
+                    id="reactionArea"
+                    class="reaction"
+                >
+
+                    <div
+                        id="target"
+                        class="target"
+                    ></div>
+
+                </div>
+
+                <button onclick="iniciarReaction()">
+                    ⚡ COMENZAR
+                </button>
+
+                <div
+                    id="reactionMessage"
+                    class="mensaje"
+                >
+                    Pulsa comenzar.
+                </div>
+
+                <button
+                    class="btn-gris"
+                    onclick="volverMenuJuegos()"
+                >
+                    ⬅️ Volver
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- BALANCE -->
+        <!-- ========================= -->
+
+        <div id="juegoBalance" class="juego">
+
+            <div class="tarjeta">
+
+                <h2>🧘 Balance Pro</h2>
+
+                <div class="score">
+                    <span>🧘 Equilibrio</span>
+                    <strong id="balanceScore">
+                        0 / 15
+                    </strong>
+                </div>
+
+                <div class="balance">
+
+                    <div class="balance-ground"></div>
+
+                    <div class="balance-line"></div>
+
+                    <div
+                        id="balancePlayer"
+                        class="balance-player"
+                    >
+                        🧍
+                    </div>
+
+                </div>
+
+                <button onclick="moverBalance(-1)">
+                    ⬅️ IZQUIERDA
+                </button>
+
+                <button onclick="moverBalance(1)">
+                    DERECHA ➡️
+                </button>
+
+                <div
+                    id="balanceMessage"
+                    class="mensaje"
+                >
+                    ¡Mantén el equilibrio!
+                </div>
+
+                <button
+                    class="btn-gris"
+                    onclick="volverMenuJuegos()"
+                >
+                    ⬅️ Volver
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- BASKET -->
+        <!-- ========================= -->
+
+        <div id="juegoBasket" class="juego">
+
+            <div class="tarjeta">
+
+                <h2>🏀 Basket Shot</h2>
+
+                <div class="score">
+                    <span>🏀 Canastas</span>
+                    <strong id="basketScore">
+                        0 / 5
+                    </strong>
+                </div>
+
+                <div class="basket">
+
+                    <div class="hoop">
+                        🏀
+                    </div>
+
+                    <div
+                        id="basketBall"
+                        class="ball"
+                    ></div>
+
+                </div>
+
+                <div class="score">
+                    <span>Potencia</span>
+                    <strong id="powerText">
+                        50%
+                    </strong>
+                </div>
+
+                <button onclick="lanzarBasket()">
+                    🏀 LANZAR
+                </button>
+
+                <div
+                    id="basketMessage"
+                    class="mensaje"
+                >
+                    Busca la potencia perfecta.
+                </div>
+
+                <button
+                    class="btn-gris"
+                    onclick="volverMenuJuegos()"
+                >
+                    ⬅️ Volver
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- MEMORY -->
+        <!-- ========================= -->
+
+        <div id="juegoMemory" class="juego">
+
+            <div class="tarjeta">
+
+                <h2>🧠 Fisio Memory</h2>
+
+                <div class="score">
+                    <span>🧠 Parejas</span>
+                    <strong id="memoryScore">
+                        0 / 6
+                    </strong>
+                </div>
+
+                <div
+                    id="memoryBoard"
+                    class="memory"
+                ></div>
+
+                <div
+                    id="memoryMessage"
+                    class="mensaje"
+                >
+                    Encuentra las parejas.
+                </div>
+
+                <button
+                    class="btn-gris"
+                    onclick="volverMenuJuegos()"
+                >
+                    ⬅️ Volver
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- STRETCH -->
+        <!-- ========================= -->
+
+        <div id="juegoStretch" class="juego">
+
+            <div class="tarjeta">
+
+                <h2>🤸 Stretch Pro</h2>
+
+                <div class="score">
+                    <span>🤸 Ejercicios</span>
+                    <strong id="stretchScore">
+                        0 / 6
+                    </strong>
+                </div>
+
+                <div class="exercise">
+
+                    <div
+                        id="exerciseIcon"
+                        class="exercise-icon"
+                    >
+                        🙆
+                    </div>
+
+                    <h3 id="exerciseName">
+                        Elevación de brazos
+                    </h3>
+
+                    <p id="exerciseDescription">
+                        Activa hombros y brazos.
+                    </p>
+
+                </div>
+
+                <button
+                    class="btn-verde"
+                    onclick="completarEjercicio()"
+                >
+                    ✅ COMPLETAR
+                </button>
+
+                <div
+                    id="stretchMessage"
+                    class="mensaje"
+                >
+                    Comienza la rutina.
+                </div>
+
+                <button
+                    class="btn-gris"
+                    onclick="volverMenuJuegos()"
+                >
+                    ⬅️ Volver
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- MENÚ INFERIOR -->
+    <!-- ========================= -->
+
+    <nav class="menu">
+
+        <div
+            id="menuInicio"
+            class="menu-item activo"
+            onclick="irInicio()"
+        >
+            <div class="menu-icon">
+                🏠
+            </div>
+
+            Inicio
+        </div>
+
+
+        <div
+            id="menuAgendar"
+            class="menu-item"
+            onclick="irAgendar()"
+        >
+            <div class="menu-icon">
+                ➕
+            </div>
+
+            Agendar
+        </div>
+
+
+        <div
+            id="menuCitas"
+            class="menu-item"
+            onclick="irCitas()"
+        >
+            <div class="menu-icon">
+                📋
+            </div>
+
+            Citas
+        </div>
+
+
+        <div
+            id="menuJuegos"
+            class="menu-item"
+            onclick="irJuegos()"
+        >
+            <div class="menu-icon">
+                🎮
+            </div>
+
+            Juegos
+        </div>
+
+    </nav>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- FIREBASE -->
+<!-- ========================= -->
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
+
+<script>
+
+    const firebaseConfig = {
+
+        apiKey:
+            "AIzaSyDJKsg37l2XCU7fRV7uiHMbh4kWbvBx2-0",
+
+        authDomain:
+            "fisiorecordatorio.firebaseapp.com",
+
+        projectId:
+            "fisiorecordatorio",
+
+        storageBucket:
+            "fisiorecordatorio.firebasestorage.app",
+
+        messagingSenderId:
+            "783605638238",
+
+        appId:
+            "1:783605638238:web:f709851699252cad1b80cf",
+
+        measurementId:
+            "G-6DZ3L7W2QB"
+
+    };
+
+
+    firebase.initializeApp(
+        firebaseConfig
+    );
+
+
+    const db =
+        firebase.firestore();
+
+</script>
+
+
+<!-- JAVASCRIPT DE FISIORECORDATORIO -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
